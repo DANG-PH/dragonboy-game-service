@@ -4,6 +4,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { RedisIoAdapter } from './redis-io.adapter';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices'; 
+import { MetricsModule } from './metrics.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -23,5 +24,8 @@ async function bootstrap() {
 
   await app.startAllMicroservices(); 
   await app.listen(Number(process.env.PORT), '0.0.0.0');
+
+  const metricsApp = await NestFactory.create(MetricsModule);
+  await metricsApp.listen(process.env.METRICS_PORT, '0.0.0.0'); 
 }
 bootstrap();
