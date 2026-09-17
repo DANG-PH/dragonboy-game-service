@@ -1,0 +1,9 @@
+export enum Role {
+  ADMIN = 'ADMIN',
+  USER = 'USER',
+  PARTNER = 'PARTNER',
+  FINANCE = 'FINANCE',
+  CASHIER = 'CASHIER',
+  EDITOR = 'EDITOR',
+  PLAYER_MANAGER = 'PLAYER_MANAGER'
+}
